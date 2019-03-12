@@ -38,6 +38,46 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter.I
             entries.add("Row " + i);
         }
 
+        RecyclerView recyclerView = findViewById(R.id.recycler);
+        adapter = new RecyclerAdapter(this, entries);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.refreshDrawableState();
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "iOS is so much nicer", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+    }
+    /*
+    public class MainActivity extends AppCompatActivity implements RecyclerAdapter.ItemClickListener {
+
+    RecyclerAdapter adapter;
+    TextView topline;
+    ArrayList<String> entries;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        topline = findViewById(R.id.topline);
+
+        entries = new ArrayList<>();
+        entries.add("First");
+        entries.add("Second");
+        entries.add("Third");
+        for (int i = 4; i < 50; i = i + 1)
+        {
+            entries.add("Row " + i);
+        }
 
         RecyclerView recyclerView = findViewById(R.id.recycler);
         adapter = new RecyclerAdapter(this, entries);
@@ -55,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter.I
             }
         });
     }
+     */
 
     @Override
     public void onItemClick(View view, int position)
